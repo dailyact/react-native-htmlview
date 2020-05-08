@@ -16,7 +16,7 @@ export default class AutoSizedImage extends PureComponent {
     this.state = {
       // set width 1 is for preventing the warning
       // You must specify a width and height for the image %s
-      width: width - 32,
+      width: this.props.style.width || 1,
       height: this.props.style.height || 1,
     };
   }
@@ -38,13 +38,15 @@ export default class AutoSizedImage extends PureComponent {
       const ratio = width / this.state.width;
       finalSize.height = this.state.height * ratio;
     }
-    const style = Object.assign(
+    const style = [
       baseStyle,
       this.props.style,
       this.state,
       finalSize,
-      { maxWidth: width - 32 }
-    );
+      { maxWidth: width - 32 },
+      (this.props.style.height === 0) && { width: width - 32, height: ((width - 32) * 9) / 16 }
+    ];
+
     let source = {};
     if (!finalSize.width || !finalSize.height) {
       source = Object.assign(source, this.props.source, this.state);
