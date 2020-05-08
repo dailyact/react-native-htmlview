@@ -138,11 +138,11 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
 
           if (parent.name === 'ol') {
             listItemPrefix = (<TextComponent style={[defaultStyle, customStyle]}>
-              {`    ${orderedListCounter++}. `}
+              {`${orderedListCounter++}. `}
             </TextComponent>);
           } else if (parent.name === 'ul') {
             listItemPrefix = (<TextComponent style={[defaultStyle, customStyle]}>
-              {`    ${opts.bullet}`}
+              {opts.bullet}
             </TextComponent>);
           }
           if (opts.addLineBreaks && index < list.length - 1) {
