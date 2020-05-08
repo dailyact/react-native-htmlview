@@ -26,6 +26,7 @@ const Img = props => {
   const imgStyle = {
     width,
     height,
+    borderRadius: 10,
   };
 
   const source = {
