@@ -112,6 +112,12 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
               linebreakAfter = opts.paragraphBreak;
             }
             break;
+          case 'ul':
+            linebreakBefore = opts.lineBreak;
+            break;
+          case 'ol':
+            linebreakBefore = opts.lineBreak;
+            break;
           case 'br':
           case 'h1':
           case 'h2':
